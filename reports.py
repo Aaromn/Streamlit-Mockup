@@ -201,19 +201,19 @@ for i, r in enumerate(reports):
             st.markdown(f"**Summary:** {r['summary']}")
             st.markdown("**Key Insights:**")
             for kind, text in r["insights"]:
-                color = "#f2fff3" if kind == "positive" else ("#ffe6e6" if kind == "negative" else "#e6ffff")
+                color = "#002503" if kind == "positive" else ("#250000" if kind == "negative" else "#002525")
                 st.markdown(f'<p style="font-size:13px; color:{color}; margin:3px 0;">{text}</p>', unsafe_allow_html=True)
 
         with col_right:
             st.markdown("**🏆 Top Performers This Week:**")
             for p in r["top_performers"]:
-                st.markdown(f'<p style="font-size:13px; color:#ffffff; margin:2px 0;">• {p}</p>', unsafe_allow_html=True)
+                st.markdown(f'<p style="font-size:13px; color:#000000; margin:2px 0;">• {p}</p>', unsafe_allow_html=True)
 
             st.markdown("<br>", unsafe_allow_html=True)
 
             st.markdown("**📌 Action Items:**")
             for a in r["action_items"]:
-                st.markdown(f'<p style="font-size:13px; color:#ffffff; margin:2px 0;">→ {a}</p>', unsafe_allow_html=True)
+                st.markdown(f'<p style="font-size:13px; color:#000000; margin:2px 0;">→ {a}</p>', unsafe_allow_html=True)
 
         st.markdown("---")
         dl1, dl2, dl3 = st.columns([1.2, 1.2, 4])
