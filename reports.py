@@ -100,10 +100,22 @@ reports = [
     },
 ]
 
+
 # ── Page Header ───────────────────────────────────────────────────────────
 hdr_col, btn_col = st.columns([4, 1])
+
+selected_regions = st.session_state.get("selected_regions", [])
+region_label = ", ".join(selected_regions) if selected_regions else "No Regions"
+
+selected_territories = st.session_state.get("selected_territories", [])
+territories_label = ", ".join(selected_territories) if selected_territories else "No Territories"
+
+
 with hdr_col:
-    st.markdown('<div class="section-header">📋 Triggers / Reports — Weekly Archive</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">📋 Triggers / Reports — Weekly Archive — </div>', unsafe_allow_html=True)
+    st.markdown(f'<div>{region_label}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div>{territories_label}</div>', unsafe_allow_html=True)
+    
 with btn_col:
     st.markdown("<br>", unsafe_allow_html=True)
     st.button("＋ Generate & Send Report", type="primary", use_container_width=True)
@@ -147,8 +159,6 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 # ── Filters ───────────────────────────────────────────────────────────────
 fc1, fc2, fc3, _ = st.columns([1.5, 1.5, 1.5, 2])
-with fc1:
-    st.selectbox("Filter by Region", ["All Regions", "East", "West", "South/Central"])
 with fc2:
     st.selectbox("Filter by Status", ["All", "New", "Viewed"])
 with fc3:
